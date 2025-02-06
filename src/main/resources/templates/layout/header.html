@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="headerLayout">
+  <head>
+    <title>Member List!!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script type="text/javascript" th:src="@{/js/common/common.js}"></script>
+    <script type="text/javascript" th:src="@{/js/fragments/header.js}"></script>
+    <script type="text/javascript" th:src="@{/js/lib/jquery-3.7.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/layout/layout.css}" />
+
+    <div style="display:flex; align-items: center;">
+      <h2>쇼핑몰 회원관리</h2>
+      <span th:text="${session.memberVO.name} + 님"></span>
+      <button>
+        <img src="" alt="프로필" />
+      </button>
+    </div>
+    <div stlye="">
+      <div>
+        <button>
+          <span>프로필 보기</span>
+        </button>
+        <button>
+          <span>정보 수정</span>
+        </button>
+        <button>
+          <span>로그아웃</span>
+        </button>
+      </div>
+      <div>
+        <button id="memberList">
+          <span>사용자 목록</span>
+        </button>
+      </div>
+    </div>
+  </head>
+</th:block>
+</html>

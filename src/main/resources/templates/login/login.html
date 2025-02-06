@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, inital-scale=1.0"/>
+
+    <title>login</title>
+
+    <script type="text/javascript" th:src="@{/js/bootstrap/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}"> </link>
+    <link rel="stylesheet" th:href="@{/css/login/login.css}"> </link>
+  </head>
+  <body>
+    <div class="container">
+      <div class="textBox">
+        <h2>과정형평가</h2>
+      </div>
+      <div class="login-html">
+        <div>
+          <input type="text" class="form-control" id="userId" placeholder="ID">
+        </div>
+        <div>
+          <input type="password" class="form-control" id="userPwd" placeholder="Password">
+        </div>
+        <div class="alertText">
+        </div>
+        <div>
+          <button class="btn btn-outline-secondary" type="button" id="loginBtn">
+            <span>Login</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" th:src="@{/js/common/common.js}"></script>
+    <script type="text/javascript" th:src="@{/js/login/login.js}"></script>
+    <script type="text/javascript" th:src="@{/js/lib/jquery-3.7.1.min.js}"></script>
+
+  </body>
+</html>
