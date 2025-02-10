@@ -9,4 +9,8 @@ import java.util.List;
 public interface MemberMapper {
 
   List<MemberVO> selectMemberList();
+
+  int selectById(MemberVO member);
+
+  int save(MemberVO member);
 }

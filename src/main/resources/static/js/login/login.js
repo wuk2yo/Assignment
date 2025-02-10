@@ -12,7 +12,7 @@ const loginBtn = () => {
   $.ajax({
     url : getContextPath() + '/login',
     type : 'POST',
-    contentType: 'application/json',
+    contentType : 'application/json',
     data : JSON.stringify(data),
     success : function(data){
       console.log('data');

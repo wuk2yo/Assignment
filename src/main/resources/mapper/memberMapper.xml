@@ -4,6 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.leeni.board.mapper.MemberMapper">
 
+    <select id="selectById" parameterType="String">
+        SELECT
+            COUNT(*)
+        FROM user_info
+        WHERE
+            id = #{id}
+          AND del_yn='N'
+    </select>
+
     <select id="selectMemberList" parameterType="String">
         SELECT
               no
@@ -19,6 +28,14 @@
         WHERE del_yn='N'
         ORDER BY create_time desc
     </select>
+
+    <insert id="save" parameterType="String">
+        INSERT INTO user_info
+            (id, name, phone, zipCode, basicAddr, detailAddr, grade)
+        VALUES
+            (#{id}, #{name}, #{phone}, #{zipCode}, #{basicAddr}, #{detailAddr}, #{grade})
+
+    </insert>
 
 
 </mapper>
