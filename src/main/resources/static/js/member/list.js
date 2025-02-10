@@ -43,17 +43,16 @@ const modalSaveBtn = () => {
   }
 
   if( !regexId(id) ) {
-    alert('아잉디는 영어')
+    alert('아이디는 영어, 숫자만 입력 가능합니다.')
   }
 
-  if( name === '' || !regexId(name) ) {
-    alert('아이디를 확인해주세요.');
+  if( !regexId(name) ) {
+    alert('이름은 한글만 입력 가능합니다.');
   }
 
-  if( phone === '' || !regexId(phone) ) {
-    alert('아이디를 확인해주세요.');
+  if( !regexId(phone) ) {
+    alert('핸드폰 번호는 숫자, 하이픈(-)만 입력 가능합니다.');
   }
-  if
 
 
   console.log('data: ', data);
@@ -64,7 +63,13 @@ const modalSaveBtn = () => {
     contentType : 'application/json',
     data : JSON.stringify(data),
     success : function(data){
-      console.log('data: ',data);
+      if ( data > 0) {
+        alert ("등록되었습니다.");
+        modalCancelBtn();
+      } else {
+        alert("정상 등록되지 않았습니다.");
+        return;
+      }
     },
     error : function (request, status, error) {
 

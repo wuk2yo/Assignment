@@ -29,11 +29,11 @@
         ORDER BY create_time desc
     </select>
 
-    <insert id="save" parameterType="String">
+    <insert id="saveMember" parameterType="String">
         INSERT INTO user_info
-            (id, name, phone, zipCode, basicAddr, detailAddr, grade)
+            (id, pwd, name, phone, zip_code, basic_Addr, detail_Addr, grade)
         VALUES
-            (#{id}, #{name}, #{phone}, #{zipCode}, #{basicAddr}, #{detailAddr}, #{grade})
+            (#{id}, #{pwd}, #{name}, #{phone}, #{zipCode}, #{basicAddr}, #{detailAddr}, #{grade})
 
     </insert>
 

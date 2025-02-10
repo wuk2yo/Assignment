@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Controller
@@ -29,11 +31,20 @@ public class MemberController {
     return "/member/list";
   }
 
+  /**
+   * 회원 등록
+   * @param memberVO
+   * @return result : 0 성공 / -1 실패
+   */
   @ResponseBody
   @PostMapping("/save")
-  public String save(MemberVO memberVO) {
-    memberService.save(memberVO);
-    return null;
+  public int save(MemberVO memberVO) {
+
+    Map<String, Object> returnMap = new HashMap<String, Object>();
+
+    int result = Integer.parseInt(String.valueOf(returnMap.get("result")));
+
+    return result;
   }
 
 }

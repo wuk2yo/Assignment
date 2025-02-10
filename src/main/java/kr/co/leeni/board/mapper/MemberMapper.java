@@ -12,5 +12,5 @@ public interface MemberMapper {
 
   int selectById(MemberVO member);
 
-  int save(MemberVO member);
+  int saveMember(MemberVO member);
 }

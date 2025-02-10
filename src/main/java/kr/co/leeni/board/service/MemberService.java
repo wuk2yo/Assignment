@@ -33,10 +33,10 @@ public class MemberService {
     if ( Cnt > 0 ) {
       returnMap.put("result", -1);
     } else {
-
+      memberVO.setPwd("0000");
+      memberMapper.saveMember(memberVO);
+      returnMap.put("result", 0);
     }
-
-
     return returnMap;
   }
 }
