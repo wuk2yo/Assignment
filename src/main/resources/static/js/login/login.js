@@ -7,7 +7,6 @@ const loginBtn = () => {
     'id' : userId,
     'pwd' : userPwd
   }
-  console.log( data );
 
   $.ajax({
     url : getContextPath() + '/login',
@@ -46,4 +45,9 @@ const loginBtn = () => {
 
 window.addEventListener('load', () => {
   $('#loginBtn').on('click', loginBtn);
+  $("input").on('keypress', function (e) {
+    if (e.which === 13) {  // e.keyCode 대신 e.which 사용
+      loginBtn();
+    }
+  });
 })

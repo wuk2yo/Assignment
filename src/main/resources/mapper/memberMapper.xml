@@ -31,9 +31,9 @@
 
     <insert id="saveMember" parameterType="String">
         INSERT INTO user_info
-            (id, pwd, name, phone, zip_code, basic_Addr, detail_Addr, grade)
+            (id, pwd, name, phone, zip_code, basic_Addr, detail_Addr, grade, update_id)
         VALUES
-            (#{id}, #{pwd}, #{name}, #{phone}, #{zipCode}, #{basicAddr}, #{detailAddr}, #{grade})
+            (#{id}, #{pwd}, #{name}, #{phone}, #{zipCode}, #{basicAddr}, #{detailAddr}, #{grade}, #{updateId})
 
     </insert>
 

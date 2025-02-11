@@ -18,4 +18,7 @@ public class MemberVO {
   private String grade;
   private Integer errCnt;
   private String createTime;
+  private String updateId;
+
+  private int offset;
 }

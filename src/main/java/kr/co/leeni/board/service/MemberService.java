@@ -1,6 +1,5 @@
 package kr.co.leeni.board.service;
 
-import kr.co.leeni.board.mapper.LoginMapper;
 import kr.co.leeni.board.mapper.MemberMapper;
 import kr.co.leeni.board.model.MemberVO;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +17,14 @@ public class MemberService {
 
   private final MemberMapper memberMapper;
 
-  public List<MemberVO> selectMemberList(){
+  public List<MemberVO> selectMemberList(MemberVO memberVO){
+
+    Map<String, Object> returnMap = new HashMap<String, Object>();
+
+    int totalSize = memberMapper.selectById(memberVO);
+
     memberMapper.selectMemberList();
+
     return memberMapper.selectMemberList();
   };
 
@@ -29,11 +34,12 @@ public class MemberService {
 
     /* 아이디 존재유무 확인 */
     int Cnt = memberMapper.selectById(memberVO);
-
     if ( Cnt > 0 ) {
       returnMap.put("result", -1);
+
     } else {
-      memberVO.setPwd("0000");
+
+      log.info("secondmemberVO:{}", memberVO);
       memberMapper.saveMember(memberVO);
       returnMap.put("result", 0);
     }
