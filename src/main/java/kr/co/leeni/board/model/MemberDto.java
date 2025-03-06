@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class MemberVO {
+public class MemberDto {
   private String id;
   private String pwd;
   private String name;
@@ -20,5 +20,4 @@ public class MemberVO {
   private String createTime;
   private String updateId;
 
-  private int offset;
 }

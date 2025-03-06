@@ -1,7 +1,7 @@
 package kr.co.leeni.board.controller;
 
 import jakarta.servlet.http.HttpSession;
-import kr.co.leeni.board.model.LoginVO;
+import kr.co.leeni.board.model.LoginDto;
 import kr.co.leeni.board.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,12 +29,12 @@ public class LoginController {
 
     @ResponseBody
     @PostMapping("/login")
-    public int login(@RequestBody LoginVO loginVO, HttpSession session) {
+    public int login(@RequestBody LoginDto loginDto, HttpSession session) {
 
-        Map<String, Object> returnMap = loginService.login(loginVO);
+        Map<String, Object> returnMap = loginService.login(loginDto);
 
         if ( "0".equals(String.valueOf(returnMap.get("result"))) ) {
-            session.setAttribute("memberVO", returnMap.get("memberVO"));
+            session.setAttribute("memberDto", returnMap.get("memberDto"));
         };
 
         int result = Integer.parseInt(String.valueOf(returnMap.get("result")));

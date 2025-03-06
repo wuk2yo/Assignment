@@ -1,16 +1,16 @@
 package kr.co.leeni.board.mapper;
 
-import kr.co.leeni.board.model.LoginVO;
-import kr.co.leeni.board.model.MemberVO;
+import kr.co.leeni.board.model.LoginDto;
+import kr.co.leeni.board.model.MemberDto;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface LoginMapper {
-  LoginVO selectById(LoginVO loginVO);
+  LoginDto selectById(LoginDto loginDto);
 
-  MemberVO matchPassword(LoginVO loginVO);
+  MemberDto matchPassword(LoginDto loginDto);
 
-  void increaseErrCnt(LoginVO loginVO);
+  void increaseErrCnt(LoginDto loginDto);
 
-  void resetErrCnt(LoginVO loginVO);
+  void resetErrCnt(LoginDto loginDto);
 }

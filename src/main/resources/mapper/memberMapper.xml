@@ -13,7 +13,14 @@
           AND del_yn='N'
     </select>
 
-    <select id="selectMemberList" parameterType="String">
+    <select id="selectMemberCount" parameterType="kr.co.leeni.board.model.SearchDto">
+        SELECT
+                COUNT(*)
+        FROM user_info
+        WHERE del_yn='N'
+    </select>
+
+    <select id="selectMemberList" parameterType="kr.co.leeni.board.model.SearchDto">
         SELECT
               no
             , id
@@ -26,6 +33,30 @@
             , TO_CHAR(create_time, 'YYYY-MM-DD HH24:MI:SS') AS create_time
         FROM user_info
         WHERE del_yn='N'
+        <choose>
+            <when test="searchWord != '' and searchType == 'searchTypeId'">
+                AND id LIKE CONCAT('%', #{searchWord}, '%')
+            </when>
+            <when test="searchWord != '' and searchType == 'searchTypeName'">
+                AND name LIKE CONCAT('%', #{searchWord}, '%')
+            </when>
+            <when test="searchWord != '' and searchType == 'searchTypePhone'">
+                AND phone LIKE CONCAT('%', #{searchWord}, '%')
+            </when>
+            <when test="searchWord != '' and searchType == 'searchTypeAddr'">
+                AND (
+                        basic_addr LIKE CONCAT('%', #{searchWord}, '%')
+                        OR detail_Addr LIKE CONCAT('%', #{searchWord}, '%')
+                )
+            </when>
+            <when test="searchType == 'searchTypeCreateTime'">
+                AND create_time BETWEEN #{searchStartDate} AND #{searchEndDate}
+            </when>
+
+            <when test="searchGrade != '' and searchType == 'searchTypeGrade'">
+                AND grade = #{searchGrade}
+            </when>
+        </choose>
         ORDER BY create_time desc
     </select>
 

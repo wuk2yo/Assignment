@@ -1,8 +1,8 @@
 package kr.co.leeni.board.service;
 
 import kr.co.leeni.board.mapper.LoginMapper;
-import kr.co.leeni.board.model.LoginVO;
-import kr.co.leeni.board.model.MemberVO;
+import kr.co.leeni.board.model.LoginDto;
+import kr.co.leeni.board.model.MemberDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,11 +17,11 @@ public class LoginService {
 
   private final LoginMapper loginMapper;
 
-  public Map<String, Object> login(LoginVO loginVO) {
+  public Map<String, Object> login(LoginDto loginDto) {
 
     Map<String, Object> returnMap = new HashMap<>();
 
-    LoginVO loginResVO = loginMapper.selectById(loginVO);
+    LoginDto loginResVO = loginMapper.selectById(loginDto);
     /* 없는 아이디 */
     if( loginResVO == null ) {
       returnMap.put("result", -1);
@@ -30,20 +30,20 @@ public class LoginService {
 
     int errCnt = loginResVO.getErrCnt();
 
-    MemberVO memberVO = loginMapper.matchPassword(loginVO);
+    MemberDto memberDto = loginMapper.matchPassword(loginDto);
 
-    if( memberVO != null && memberVO.getErrCnt() < 5) {
+    if( memberDto != null && memberDto.getErrCnt() < 5) {
       /* 로그인성공, 에러카운트 초기화 */
-      loginMapper.resetErrCnt(loginVO);
+      loginMapper.resetErrCnt(loginDto);
       returnMap.put("result", 0);
-      returnMap.put("memberVO", memberVO);
+      returnMap.put("memberDto", memberDto);
       return returnMap;
     }
 
     /* 틀린 비밀번호 */
-    if( memberVO == null) {
+    if( memberDto == null) {
       if ( errCnt < 5 ) {
-        loginMapper.increaseErrCnt(loginVO);
+        loginMapper.increaseErrCnt(loginDto);
         errCnt++;
       }
     }

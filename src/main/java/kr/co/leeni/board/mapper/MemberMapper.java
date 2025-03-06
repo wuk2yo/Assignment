@@ -1,6 +1,7 @@
 package kr.co.leeni.board.mapper;
 
-import kr.co.leeni.board.model.MemberVO;
+import kr.co.leeni.board.model.MemberDto;
+import kr.co.leeni.board.model.SearchDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -8,9 +9,12 @@ import java.util.List;
 @Mapper
 public interface MemberMapper {
 
-  List<MemberVO> selectMemberList();
+  List<MemberDto> selectMemberList(SearchDto params);
 
-  int selectById(MemberVO member);
+  int selectMemberCount(SearchDto params);
 
-  int saveMember(MemberVO member);
+  int selectById(MemberDto member);
+
+  int saveMember(MemberDto member);
+
 }
